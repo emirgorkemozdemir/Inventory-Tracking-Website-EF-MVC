@@ -1,0 +1,36 @@
+﻿@using Stok_Takip_Mvc_.net6.Models
+@model Satistablosu
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+       Layout="~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("EditSelling", "Satis", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m=>m.Satisid)
+
+    @Html.DropDownListFor(m => m.Urunid, (List<SelectListItem>)ViewBag.products, "Ürün seçiniz", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Urunid, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.DropDownListFor(m => m.Musteriid, (List<SelectListItem>)ViewBag.customers, "Müşteri seçiniz", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Musteriid, "", new { @class = "text-danger" })
+    <br />
+
+
+    @Html.TextBoxFor(m => m.Satisadet, new { @class = "form-control", placeholder = "Satış adedi giriniz" })
+    @Html.ValidationMessageFor(model => model.Satisadet, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.TextBoxFor(m => m.Satisfiyat, new { @class = "form-control", placeholder = "Satış fiyatı giriniz" })
+    @Html.ValidationMessageFor(model => model.Satisfiyat, "", new { @class = "text-danger" })
+    <br />
+
+    <input type="submit" class="btn btn-danger" value="Ekle" />
+}

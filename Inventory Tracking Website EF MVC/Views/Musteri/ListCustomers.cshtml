@@ -1,0 +1,33 @@
+﻿@model List<Musteritablosu>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+         Layout="~/Views/Shared/Layout.cshtml";
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Soyadı</th>
+            <th>Müşteriyi Sil</th>
+            <th>Müşteriyi Düzenle</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Musteriad</td>
+                <td>@customer.Musterisoyad</td>
+                <td><a href="/Musteri/DeleteCustomer/@customer.Musteriid" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Musteri/EditCustomer/@customer.Musteriid" class="btn btn-warning">Düzenle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Musteri/AddCustomer" class="btn btn-success">Müşteri Ekle</a>
+

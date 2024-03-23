@@ -1,0 +1,22 @@
+﻿@model Kategoritablosu
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+     Layout="~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("EditCategory", "Kategori", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Kategoriid)
+    @Html.TextBoxFor(m => m.Kategoriad, new { @class = "form-control", placeholder = "Kategori adı giriniz" })
+    @Html.ValidationMessageFor(model => model.Kategoriad, "", new { @class = "text-danger" })
+
+    <br />
+
+    <input type="submit" value="Düzenle" class="btn btn-danger" style="margin-top:10px" />
+
+}

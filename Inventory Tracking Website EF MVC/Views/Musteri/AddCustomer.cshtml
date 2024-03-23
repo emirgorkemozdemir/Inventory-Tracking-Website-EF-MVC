@@ -1,0 +1,27 @@
+﻿@model Musteritablosu
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+       Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddCustomer", "Musteri", FormMethod.Post))
+{
+
+@Html.AntiForgeryToken()
+
+@Html.TextBoxFor(m => m.Musteriad, new { @class = "form-control", placeholder = "Müşteri adı giriniz" })
+@Html.ValidationMessageFor(model => model.Musteriad, "", new { @class = "text-danger" })
+<br />
+
+@Html.TextBoxFor(m => m.Musterisoyad, new { @class = "form-control", placeholder = "Müşteri soyadı giriniz" })
+@Html.ValidationMessageFor(model => model.Musterisoyad, "", new { @class = "text-danger" })
+<br />
+
+<input type="submit" class="btn btn-danger" value="Ekle" />
+
+}
+
+

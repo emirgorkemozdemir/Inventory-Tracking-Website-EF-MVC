@@ -1,0 +1,39 @@
+﻿@using Stok_Takip_Mvc_.net6.Models
+@model List<Satistablosu>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+       Layout="~/Views/Shared/Layout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Satışı Yapılan Ürün</th>
+            <th>Satış Yapılan Müşteri</th>
+            <th>Satış Adedi</th>
+            <th>Satış Fiyatı</th>
+            <th>Satışı Sil</th>
+            <th>Satışı Düzenle</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var selling in Model)
+        {
+            <tr>
+                <td>@selling.Urun.Urunad</td>
+                <td>@selling.Musteri.Musteriad @selling.Musteri.Musterisoyad</td>
+                <td>@selling.Satisadet</td>
+                <td>@selling.Satisfiyat</td>
+                <td><a href="/Satis/DeleteSelling/@selling.Satisid" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Satis/EditSelling/@selling.Satisid" class="btn btn-warning">Düzenle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Satis/AddSelling" class="btn btn-success">Satış Ekle</a>

@@ -1,0 +1,31 @@
+﻿@model Uruntablosu
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+     Layout="~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddProduct", "Urun", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.TextBoxFor(m => m.Urunad, new { @class = "form-control", placeholder = "Ürün adı giriniz" })
+    @Html.ValidationMessageFor(model => model.Urunad, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.DropDownListFor(m => m.Kategoriid, (List<SelectListItem>)ViewBag.categories, "Kategori seçiniz", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Kategoriid, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.TextBoxFor(m => m.Urunfiyat, new { @class = "form-control", placeholder = "Ürün fiyatı giriniz" })
+    @Html.ValidationMessageFor(model => model.Urunfiyat, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.TextBoxFor(m => m.Urunstok, new { @class = "form-control", placeholder = "Ürün stoğu giriniz" })
+    @Html.ValidationMessageFor(model => model.Urunstok, "", new { @class = "text-danger" })
+    <br />
+
+    <input type="submit" class="btn btn-danger" value="Ekle" />
+}
